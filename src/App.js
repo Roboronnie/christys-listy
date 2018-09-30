@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import RepresentativeInputs from './RepresentativeInputs';
 
 class App extends Component {
   constructor(props) {
@@ -18,13 +19,6 @@ class App extends Component {
 
   render() {
     console.log('in render: ', this.state.moreRepresentative);
-    let additionalRepresentativeInputs = '';
-    let representativeInput = <input type="text" placeholder="Representative" />;
-
-    if(this.state.moreRepresentative === 1){
-      additionalRepresentativeInputs = representativeInput;
-    } 
-
     return (
       <div className="App">
         <header className="App-header">
@@ -34,11 +28,7 @@ class App extends Component {
         <label>Company Name: </label>
         <input type="text" placeholder="Company Name" />
         <br />
-        <label>Representative: </label>
-        <input type="text" placeholder="Representative" />
-        {additionalRepresentativeInputs}
-        <br />
-        <button onClick={this.addMoreRepresentatives}>Add More Representative</button>
+        <RepresentativeInputs />
       </div>
     );
   }
