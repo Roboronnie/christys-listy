@@ -1,34 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
-import RepresentativeInputs from './RepresentativeInputs';
+
+import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+
+import Company from './Components/Company/Company';
+import Student from './Components/Student/Student';
+
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      moreRepresentative: 0,
-    }
-  }
-
-  addMoreRepresentatives = () => {
-    console.log('before click: ', this.state.moreRepresentative);
-    this.setState({
-      moreRepresentative: this.state.moreRepresentative + 1
-    });
-  };
 
   render() {
-    console.log('in render: ', this.state.moreRepresentative);
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Christy's Listy</h1>
-        </header>
-        <p>Enter Company Name and Representative(s)</p>
-        <label>Company Name: </label>
-        <input type="text" placeholder="Company Name" />
-        <br />
-        <RepresentativeInputs />
+      <Router>
+          <Switch>
+            <Redirect exact from="/" to="/company" />
+            <Route path="/company" component={Company} />
+            <Route path="/student" component={Student} />
+            <Route render={() => <h1>404</h1>} />
+          </Switch>
+        </Router>
       </div>
     );
   }

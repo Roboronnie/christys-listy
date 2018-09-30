@@ -17,11 +17,6 @@ class RepresentativeInputs extends Component {
         this.setState({ representatives: newRepresentatives });
     }
 
-    handleSubmit = () => {
-        const { name, representatives } = this.state;
-        alert(`Incorporated: ${name} with ${representatives.length} representatives`);
-    }
-
     handleAddRepresentative = () => {
         this.setState({
             representatives: this.state.representatives.concat([{ name: '' }])
@@ -38,7 +33,7 @@ class RepresentativeInputs extends Component {
         console.log(this.state.representatives)
         return (
             <form onSubmit={this.handleSubmit}>
-                <h4>Representatives</h4>
+                <div>Representatives</div>
                 {this.state.representatives.map((representative, index) => (
                     <div key={index}>
                         <input
