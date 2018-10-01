@@ -29,14 +29,20 @@ class StudentInputs extends Component {
         });
     }
 
+    handleSaveStudentList = () => {
+        console.log('done clicked');
+        console.log(this.state.students);
+    }
+
     render() {
         console.log(this.state.students)
         return (
-            <form>
+            <form onSubmit={this.handleSaveStudentList}>
                 <div>Students</div>
                 {this.state.students.map((student, index) => (
                     <div key={index}>
                         <input
+                            required
                             type="text"
                             placeholder={`Student #${index + 1} name`}
                             value={student.name}
@@ -46,6 +52,8 @@ class StudentInputs extends Component {
                     </div>
                 ))}
                 <button type="button" onClick={this.handleAddStudent}>Add Students</button>
+                <br />
+                <button type="submit">Done</button>
             </form>
         )
     }
