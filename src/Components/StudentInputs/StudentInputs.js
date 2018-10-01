@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class StudentInputs extends Component {
     constructor() {
@@ -32,6 +33,7 @@ class StudentInputs extends Component {
     handleSaveStudentList = () => {
         console.log('done clicked');
         console.log(this.state.students);
+        this.props.dispatch({ type: 'POST_STUDENT'})
     }
 
     render() {
@@ -59,4 +61,4 @@ class StudentInputs extends Component {
     }
 }
 
-export default StudentInputs;
+export default connect()(StudentInputs);
