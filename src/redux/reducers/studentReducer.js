@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux';
 
 const students = (state = '', action) => {
-    console.log('inside student reducer');
-    console.log('state: :', state, 'and action is: ',action);
-    return state;
+    switch (action.type) {
+        case 'SET_STUDENTS':
+          return action.payload;
+        default:
+          return state;
+      }
 }
 
 export default combineReducers({

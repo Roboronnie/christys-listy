@@ -1,15 +1,15 @@
-import { takeEvery, call, put as dispatch } from 'redux-saga';
+import { takeEvery, call, put as dispatch } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* studentSaga() {
-    yield takeEvery('POST_STUDENT_LIST', postStudentList);
+    yield takeEvery('POST_STUDENTS', postStudentList);
 }
 
 function* postStudentList(action) {
     try{
-        console.log('inside try', action);
+        yield call(axios.post, '/api/student', action.payload);
     } catch(error) {
-        console.log(error)
+        console.log('error student saga: ', error);
     };
 }
 
