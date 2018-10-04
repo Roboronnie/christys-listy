@@ -7,6 +7,7 @@ class NavBar extends Component {
             <div>
                 <Link to="/company" >Company</Link>
                 <Link to="/student" >Student</Link>
+                <Link to="/schedule" >Schedule</Link>
             </div>
         )
     }
