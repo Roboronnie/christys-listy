@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar/NavBar.js';
+import {connect} from 'react-redux';
+
+mapStateToProps = () => {
+    return (
+        state
+    )
+}
 
 class Schedule extends Component {
     render() {
@@ -14,4 +21,4 @@ class Schedule extends Component {
     }
 }
 
-export default Schedule;
+export default connect(mapStateToProps)(Schedule);
