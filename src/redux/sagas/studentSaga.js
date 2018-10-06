@@ -6,6 +6,7 @@ function* studentSaga() {
 }
 
 function* postStudentList(action) {
+    console.log('inside postStudentList');
     try{
         yield call(axios.post, '/api/student', action.payload);
     } catch(error) {

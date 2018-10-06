@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NavBar from '../NavBar/NavBar.js';
 import {connect} from 'react-redux';
 
-mapStateToProps = () => {
+const mapStateToProps = (state) => {
     return (
         state
     )
