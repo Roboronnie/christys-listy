@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function* studentSaga() {
     yield takeEvery('POST_STUDENTS', postStudentList);
+    yield takeEvery('FETCH_STUDENTS', fetchStudentList);
 }
 
 function* postStudentList(action) {
@@ -12,6 +13,9 @@ function* postStudentList(action) {
     } catch (error) {
         console.log('error student saga: ', error);
     };
+}
+
+function* fetchStudentList() {
     try {
         const studentList = yield call(axios.get, '/api/student');
         yield dispatch({
@@ -22,6 +26,4 @@ function* postStudentList(action) {
         console.log(error)
     };
 }
-
-
 export default studentSaga;

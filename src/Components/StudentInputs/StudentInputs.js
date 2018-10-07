@@ -39,6 +39,7 @@ class StudentInputs extends Component {
     render() {
         console.log(this.state.students)
         return (
+            <div>
             <form onSubmit={this.handleSaveStudentList}>
                 <div>Students</div>
                 {this.state.students.map((student, index) => (
@@ -57,6 +58,7 @@ class StudentInputs extends Component {
                 <br />
                 <button type="submit">Done</button>
             </form>
+            </div>   
         )
     }
 }

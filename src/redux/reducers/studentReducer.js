@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
-const students = (state = '', action) => {
+const defaultState = [{ id: '', student: ''}]
+const students = (state = defaultState, action) => {
     switch (action.type) {
         case 'SET_STUDENTS':
             console.log(action.payload);
