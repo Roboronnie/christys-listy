@@ -31,13 +31,10 @@ class StudentInputs extends Component {
     }
 
     handleSaveStudentList = () => {
-        console.log('done clicked');
-        console.log(this.state.students);
         this.props.dispatch({ type: 'POST_STUDENTS', payload: this.state.students});
     }
 
     render() {
-        console.log(this.state.students)
         return (
             <div>
             <form onSubmit={this.handleSaveStudentList}>

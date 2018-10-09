@@ -22,8 +22,6 @@ class Student extends Component {
                 </div>
             )
         });
-        console.log(this.props.students.length);
-        console.log(studentList);
         return (
             <div>
                 <header className="App-header">
