@@ -30,14 +30,14 @@ class StudentInputs extends Component {
         });
     }
 
-    handleSaveStudentList = () => {
+    handleSubmitStudentList = () => {
         this.props.dispatch({ type: 'POST_STUDENTS', payload: this.state.students});
     }
 
     render() {
         return (
             <div>
-            <form onSubmit={this.handleSaveStudentList}>
+            <form onSubmit={this.handleSubmitStudentList}>
                 <div>Students</div>
                 {this.state.students.map((student, index) => (
                     <div key={index}>
@@ -53,7 +53,7 @@ class StudentInputs extends Component {
                 ))}
                 <button type="button" onClick={this.handleAddStudent}>Add Students</button>
                 <br />
-                <button type="submit">Done</button>
+                <input type="submit" />
             </form>
             </div>   
         )

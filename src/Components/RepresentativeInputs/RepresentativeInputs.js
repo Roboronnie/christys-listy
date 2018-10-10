@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class RepresentativeInputs extends Component {
     constructor() {
@@ -29,10 +30,14 @@ class RepresentativeInputs extends Component {
         });
     }
 
+    handleSubmitRepresentativesAndCompany = () => {
+        console.log('submit clicked');
+    }
+
     render() {
         console.log(this.state.representatives)
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmitRepresentativesAndCompany}>
                 <div>Representatives</div>
                 {this.state.representatives.map((representative, index) => (
                     <div key={index}>
@@ -46,9 +51,10 @@ class RepresentativeInputs extends Component {
                     </div>
                 ))}
                 <button type="button" onClick={this.handleAddRepresentative}>Add Representative</button>
+                <input type="submit" />
             </form>
         )
     }
 }
 
-export default RepresentativeInputs;
+export default connect()(RepresentativeInputs);
