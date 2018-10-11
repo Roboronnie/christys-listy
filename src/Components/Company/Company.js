@@ -11,9 +11,6 @@ class Company extends Component {
                     <NavBar />
                 </header>
                 <div>Enter Company Name and Representative(s)</div>
-                <div>Company Name </div>
-                <input type="text" placeholder="Company Name" />
-                <br />
                 <RepresentativeInputs />
             </div>
         )

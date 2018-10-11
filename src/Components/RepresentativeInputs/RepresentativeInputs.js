@@ -5,7 +5,7 @@ class RepresentativeInputs extends Component {
     constructor() {
         super();
         this.state = {
-            name: '',
+            company: '',
             representatives: [{ name: '' }],
         };
     }
@@ -32,12 +32,21 @@ class RepresentativeInputs extends Component {
 
     handleSubmitRepresentativesAndCompany = () => {
         console.log('submit clicked');
+        this.props.dispatch({ type: 'POST_COMPANY_AND_REPRESENTATIVES', payload: this.state});
     }
 
+    handleCompanyNameChange = (event) => {
+        this.setState({
+            company: event.target.value
+        })
+    }
     render() {
-        console.log(this.state.representatives)
+        console.log(this.state)
         return (
             <form onSubmit={this.handleSubmitRepresentativesAndCompany}>
+                <div>Company Name </div>
+                <input type="text" placeholder="Company Name" onChange={this.handleCompanyNameChange}/>
+                <br />
                 <div>Representatives</div>
                 {this.state.representatives.map((representative, index) => (
                     <div key={index}>
