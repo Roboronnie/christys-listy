@@ -14,19 +14,19 @@ function* companyAndRepresentativeSaga() {
 //     }
 // }
 
-
 function* postCompanyAndRepresentative(action) {
     console.log('inside postCompanyAndRepresentative');
     try {
         yield call(axios.post, 'api/companyAndRepresentatives/company', {company: action.payload.company});
+        yield call(axios.post, `/api/companyAndRepresentatives/${action.payload.company}`, {representatives: action.payload.representatives});
     } catch (error) {
         console.log('error company saga: ', error);
     }
-    try {
-        yield call(axios.post, `/api/companyAndRepresentatives/${action.payload.company}`, {representatives: action.payload.representatives});
-    } catch (error) {
-        console.log('error representative saga: ', error);
-    };
+    // try {
+    //     yield call(axios.post, `/api/companyAndRepresentatives/${action.payload.company}`, {representatives: action.payload.representatives});
+    // } catch (error) {
+    //     console.log('error representative saga: ', error);
+    // };
 }
 
 export default companyAndRepresentativeSaga;
