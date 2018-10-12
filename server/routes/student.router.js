@@ -5,8 +5,8 @@ const router = express.Router();
 router.post('/', async (req,res) => {
     req.body.forEach(async element => {
         const queryText = `INSERT INTO students (student) VALUES ($1);`;
-        const queryValues = [element.name];
-        await pool.query(queryText,queryValues)
+        const queryValue = [element.name];
+        await pool.query(queryText,queryValue)
         .then(() => { res.sendStatus(201); })
         .catch((error) => {
             res.sendStatus(500);
