@@ -25,17 +25,18 @@ class Company extends Component {
         const uniqueCompanyName = [...new Set(companyNames)];
         console.log('unique company names: ', uniqueCompanyName);
         let display = this.props.companyAndRepresentative.map(item => {
-            if (uniqueCompanyName.includes(item.company_name)){
+            // if (uniqueCompanyName.includes(item.company_name)) {
 
-            }
+            // }
             return (
                 <div key={item.representative_id}>
-                
+                    <tr>
+                        {item.representative_name}
+                        <button>remove</button>
+                    </tr>
                 </div>
             )
         })
-
-
         return (
             <div>
                 <header className="App-header">
@@ -44,7 +45,7 @@ class Company extends Component {
                 </header>
                 <div>Enter Company Name and Representative(s)</div>
                 <RepresentativeInputs />
-                <br/>
+                <br />
                 {display}
             </div>
         )
