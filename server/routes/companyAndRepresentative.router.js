@@ -15,15 +15,9 @@ router.post('/company', (req, res) => {
 });
 
 router.post('/:company', (req, res) => {
-    console.log('reached server router for company and representatives');
-    console.log(req.body); // representatives
-    console.log(req.params); // company
     const representativeList = req.body.representatives;
     pool.query(`SELECT company.id from company where company.name = '${req.params.company}'`)
         .then(async (result) => {
-            console.log('result.rows: ', result.rows); //result.rows.id is target company id
-            // loop through representatives and insert into rep table
-            console.log('result.rows.id:',result.rows[0].id);
             const companyId = result.rows[0].id;
             representativeList.forEach( async rep => {
                 const queryText = `INSERT INTO representatives (name, company_id) VALUES ($1, $2);`;
@@ -38,6 +32,17 @@ router.post('/:company', (req, res) => {
             });
         }).catch((error) => {
             console.log('error selecting company id: ', error);
+        });
+});
+
+router.get('/', (req, res) => {
+    const queryText = `SELECT company.id as company_id, company.name as company_name, representatives.name as representative_name, 
+        representatives.id as representative_id from company JOIN representatives ON company.id = representatives.company_id;`;
+    pool.query(queryText)
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('error getting company and representatives: ', error);
         });
 });
 

@@ -11,6 +11,4 @@ const students = (state = defaultState, action) => {
       }
 }
 
-export default combineReducers({
-    students
-})
+export default students;
