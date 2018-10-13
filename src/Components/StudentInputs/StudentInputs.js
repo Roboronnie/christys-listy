@@ -5,7 +5,6 @@ class StudentInputs extends Component {
     constructor() {
         super();
         this.state = {
-            name: '',
             students: [{ name: '' }],
         };
     }
@@ -32,6 +31,9 @@ class StudentInputs extends Component {
 
     handleSubmitStudentList = () => {
         this.props.dispatch({ type: 'POST_STUDENTS', payload: this.state.students});
+        this.setState({
+            students: [{ name: '' }]
+        })
     }
 
     render() {

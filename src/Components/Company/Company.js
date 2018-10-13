@@ -14,6 +14,10 @@ class Company extends Component {
         this.props.dispatch({ type: 'GET_COMPANY_AND_REPRESENTATIVE' });
     }
 
+    removeRepresentative = (id) => {
+        console.log(id);
+        // dispatch action to remove rep from db rep table here
+    }
     render() {
         console.log(this.props.companyAndRepresentative);
         const companyNames = [];
@@ -30,10 +34,11 @@ class Company extends Component {
             // }
             return (
                 <div key={item.representative_id}>
-                    <tr>
-                        {item.representative_name}
-                        <button>remove</button>
-                    </tr>
+                    <div>
+                        {item.company_name} : {item.representative_name}
+                        <button onClick={()=>{this.removeRepresentative(item.representative_id)}}>remove</button>
+                    </div>
+                    <br />
                 </div>
             )
         })

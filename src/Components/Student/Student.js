@@ -4,21 +4,29 @@ import StudentInputs from '../StudentInputs/StudentInputs';
 import { connect } from 'react-redux';
 
 const mapStateToProp = (state) => ({
-    students: state.student.students
+    students: state.student
 })
 
 class Student extends Component {
 
-    componentDidMount () {
-        this.props.dispatch({ type: 'FETCH_STUDENTS'});
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_STUDENTS' });
+    }
+
+    removeStudent = (id) => {
+        console.log(id);
+        // dispatch action to remove student from student table in db
     }
 
     render() {
-        let studentList = '';
-        studentList = this.props.students.map(item => {
-            return(
+        const studentList = this.props.students.map(item => {
+            return (
                 <div key={item.id}>
-                {item.student}
+                    <div>
+                        {item.student}
+                        <button onClick={()=>{this.removeStudent(item.id)}}>remove</button>
+                    </div>
+                    <br />
                 </div>
             )
         });
