@@ -9,15 +9,32 @@ const mapStateToProps = (state) => ({
 
 
 class Company extends Component {
-    
-    componentDidMount () {
-        this.props.dispatch({ type:'GET_COMPANY_AND_REPRESENTATIVE'});
+
+    componentDidMount() {
+        this.props.dispatch({ type: 'GET_COMPANY_AND_REPRESENTATIVE' });
     }
 
     render() {
         console.log(this.props.companyAndRepresentative);
-        let display = '';
-        this.props.companyAndRepresentative.map()
+        const companyNames = [];
+        this.props.companyAndRepresentative.map(item => {
+            companyNames.push(item.company_name);
+            return null
+        })
+        console.log('company names: ', companyNames);
+        const uniqueCompanyName = [...new Set(companyNames)];
+        console.log('unique company names: ', uniqueCompanyName);
+        let display = this.props.companyAndRepresentative.map(item => {
+            if (uniqueCompanyName.includes(item.company_name)){
+
+            }
+            return (
+                <div key={item.representative_id}>
+                
+                </div>
+            )
+        })
+
 
         return (
             <div>
@@ -27,6 +44,8 @@ class Company extends Component {
                 </header>
                 <div>Enter Company Name and Representative(s)</div>
                 <RepresentativeInputs />
+                <br/>
+                {display}
             </div>
         )
     }

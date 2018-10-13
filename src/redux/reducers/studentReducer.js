@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-
 const defaultState = [{ id: '', student: ''}]
 const students = (state = defaultState, action) => {
     switch (action.type) {
