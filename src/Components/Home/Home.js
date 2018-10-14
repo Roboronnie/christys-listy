@@ -8,11 +8,14 @@ class Home extends Component {
 
     activateEmployerLogin = () => {
         console.log('employer clicked');
+        this.props.history.push('company-ranking');
     }
 
     activateStudentLogin = () => {
         console.log('student clicked');
+        this.props.history.push('student-ranking');
     }
+
     render() {
         return (
             <div>

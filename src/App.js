@@ -7,6 +7,8 @@ import Company from './Components/Company/Company';
 import Student from './Components/Student/Student';
 import Schedule from './Components/Schedule/Schedule';
 import Home from './Components/Home/Home';
+import CompanyRanking from './Components/CompanyRanking/CompanyRanking';
+import StudentRanking from './Components/StudentRanking/StudentRanking';
 
 class App extends Component {
 
@@ -20,6 +22,8 @@ class App extends Component {
             <Route path="/student" component={Student} />
             <Route path="/schedule" component={Schedule} />
             <Route path="/home" component={Home} />
+            <Route path="/company-ranking" component={CompanyRanking} />
+            <Route path="/student-ranking" component={StudentRanking} />
             <Route render={() => <h1>404</h1>} />
           </Switch>
         </Router>
@@ -27,5 +31,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
